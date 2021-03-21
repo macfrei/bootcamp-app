@@ -13,7 +13,7 @@ QuestionCard.propTypes = {
 
 export default function QuestionCard({
   question,
-  author = 'Anonymous',
+  author,
   votes = 0,
   isOpenQuestion,
   onVote,
@@ -22,7 +22,7 @@ export default function QuestionCard({
   return (
     <Card>
       <Wrapper>
-        <span>{author}</span>
+        <span>{author || 'Anonymous'}</span>
         <span>{isOpenQuestion ? 'Open question' : 'Allready answered'}</span>
       </Wrapper>
       <h2>{question}</h2>
