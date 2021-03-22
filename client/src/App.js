@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import QuestionCard from './components/QuestionCard'
-import cardData from './assets/cardData.json'
+import getCards from './services/getCards'
 
 function App() {
-  const [cards, setCards] = useState(cardData)
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCards()
+      .then(data => setCards([...data]))
+      .catch(error => console.error('error---', error))
+  }, [cards])
 
   return (
     <AppGrid>

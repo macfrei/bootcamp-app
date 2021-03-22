@@ -1,0 +1,22 @@
+# Post card
+
+GET http://localhost:1337/cards
+
+###
+POST http://localhost:1337/cards
+Content-Type: application/json
+
+{
+  "question": "What is my question?",
+  "author": "Jane"
+}
+
+###
+POST http://localhost:1337/auth/local/register
+Content-Type: application/json
+
+{
+  "username": "Summer",
+  "email": "summer@doe.com",
+  "password": "17Hackers"
+}
