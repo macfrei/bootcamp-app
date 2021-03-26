@@ -6,7 +6,6 @@ const cardProps = {
   author: 'Dumbledore',
   question: 'Who makes me socks?',
   isOpenQuestion: true,
-  votes: 0,
 }
 
 describe('QuestionCard', () => {
@@ -20,27 +19,12 @@ describe('QuestionCard', () => {
     expect(screen.getByText('Open question')).toBeInTheDocument()
     rerender(<QuestionCard {...cardProps} isOpenQuestion={false} />)
     expect(screen.getByText('Allready answered')).toBeInTheDocument()
-    expect(screen.getAllByRole('button')).toHaveLength(2)
+    expect(screen.getByRole('button', { name: 'delete' })).toBeInTheDocument()
   })
 
-  it('should display "+" if votes are 0 or number of votes', () => {
-    const { rerender } = render(<QuestionCard {...cardProps} votes={0} />)
-    expect(screen.getByRole('button', { name: 'vote' })).toHaveTextContent('+')
-    rerender(<QuestionCard {...cardProps} votes={3} />)
-    expect(screen.getByRole('button', { name: 'vote' })).toHaveTextContent('3')
-  })
-
-  it('should call function onVote on button click', () => {
-    const callback = jest.fn()
-    const { rerender } = render(
-      <QuestionCard {...cardProps} votes={5} onVote={callback} />
-    )
-    userEvent.click(screen.getByRole('button', { name: 'vote' }))
-    expect(callback).toHaveBeenCalledTimes(1)
-    expect(screen.getByRole('button', { name: 'vote' })).toHaveTextContent(5)
-    rerender(<QuestionCard {...cardProps} votes={10} onVote={callback} />)
-    expect(callback).toHaveBeenCalled()
-    expect(screen.getByRole('button', { name: 'vote' })).toHaveTextContent(10)
+  it('should render "Anonymous" if there is no author given', () => {
+    render(<QuestionCard {...cardProps} author={undefined} />)
+    expect(screen.getByText(/anonymous/i)).toBeInTheDocument()
   })
 
   it('should call function onDelete on button click', () => {
