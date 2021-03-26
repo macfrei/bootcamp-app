@@ -17,10 +17,6 @@
     "author": {
       "type": "string"
     },
-    "votes": {
-      "type": "integer",
-      "default": 0
-    },
     "isOpenQuestion": {
       "type": "boolean",
       "default": true
