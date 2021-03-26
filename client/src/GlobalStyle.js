@@ -28,4 +28,10 @@ body {
     --shadow-orange: 0px 4px 10px #ff5a3666;
     --border-blue: 1px solid var(--blue-50);
 }
+
+button, input {
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 90%;
+}
 `
