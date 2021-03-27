@@ -11,7 +11,8 @@
     "build": "strapi build",
     "postbuild": "cd client && npm run build",
     "strapi": "strapi",
-    "postinstall": "cd client && npm install"
+    "postinstall": "cd client && npm install",
+    "test": "cd client && npm run test"
   },
   "devDependencies": {},
   "dependencies": {

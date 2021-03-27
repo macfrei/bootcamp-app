@@ -1,0 +1,25 @@
+# Cards
+
+### All cards
+GET http://localhost:1337/cards
+
+### Post cards
+POST http://localhost:1337/cards
+Content-Type: application/json
+
+{
+  "question": "What is HTML?",
+  "author": "John"
+}
+
+# User
+
+### Register new user
+POST http://localhost:1337/auth/local/register
+Content-Type: application/json
+
+{
+  "username": "Summer",
+  "email": "summer@doe.com",
+  "password": "17Hackers"
+}
