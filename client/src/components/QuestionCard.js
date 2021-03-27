@@ -5,26 +5,24 @@ import Icon from 'supercons'
 QuestionCard.propTypes = {
   question: PropTypes.string,
   author: PropTypes.string,
-  isOpenQuestion: PropTypes.bool,
+  isAnswered: PropTypes.bool,
   onDelete: PropTypes.func,
 }
 
 export default function QuestionCard({
   question,
   author,
-  isOpenQuestion,
+  isAnswered,
   onDelete,
 }) {
   return (
     <Card>
-      <Wrapper>
+      <Header>
         <span>{author || 'Anonymous'}</span>
-        <span>{isOpenQuestion ? 'Open question' : 'Allready answered'}</span>
-      </Wrapper>
+        <span>{isAnswered ? 'Allready answered' : 'Open question'}</span>
+      </Header>
       <h2>{question}</h2>
-      <Wrapper>
-        <Icon glyph="delete" onClick={onDelete} role="button" size={24} />
-      </Wrapper>
+      <Icon glyph="delete" onClick={onDelete} role="button" size={24} />
     </Card>
   )
 }
@@ -50,7 +48,7 @@ const Card = styled.section`
   }
 `
 
-const Wrapper = styled.div`
+const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;

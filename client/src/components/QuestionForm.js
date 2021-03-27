@@ -4,10 +4,10 @@ import { useState } from 'react'
 import Button from './Button'
 
 QuestionForm.propTypes = {
-  onCreatQuestion: PropTypes.func.isRequired,
+  onCreateQuestion: PropTypes.func.isRequired,
 }
 
-export default function QuestionForm({ onCreatQuestion }) {
+export default function QuestionForm({ onCreateQuestion }) {
   const [inputValue, setInputValue] = useState('')
   return (
     <Form onSubmit={handleSubmit}>
@@ -26,7 +26,7 @@ export default function QuestionForm({ onCreatQuestion }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    onCreatQuestion(inputValue)
+    onCreateQuestion(inputValue)
     setInputValue('')
   }
 }

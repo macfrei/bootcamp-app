@@ -12,14 +12,15 @@
   },
   "attributes": {
     "question": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "author": {
       "type": "string"
     },
-    "isOpenQuestion": {
+    "isAnswered": {
       "type": "boolean",
-      "default": true
+      "default": false
     }
   }
 }

@@ -6,6 +6,8 @@ export default function createCard(card) {
     },
     body: JSON.stringify(card),
   })
-    .then(res => res.json())
+    .then(res =>
+      res.ok ? res.json() : Promise.reject(`HTTP Error: ${res.status}`)
+    )
     .then(data => (data.error ? Promise.reject(data) : data))
 }

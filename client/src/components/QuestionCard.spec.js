@@ -5,19 +5,18 @@ import QuestionCard from './QuestionCard'
 const cardProps = {
   author: 'Dumbledore',
   question: 'Who makes me socks?',
-  isOpenQuestion: true,
+  isAnswered: false,
 }
 
 describe('QuestionCard', () => {
   it('should render a card with props', () => {
     const { rerender } = render(<QuestionCard {...cardProps} />)
-    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
       'Who makes me socks'
     )
     expect(screen.getByText(/dumbledore/i)).toBeInTheDocument()
     expect(screen.getByText('Open question')).toBeInTheDocument()
-    rerender(<QuestionCard {...cardProps} isOpenQuestion={false} />)
+    rerender(<QuestionCard {...cardProps} isAnswered={true} />)
     expect(screen.getByText('Allready answered')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'delete' })).toBeInTheDocument()
   })
